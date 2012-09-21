@@ -1,0 +1,42 @@
+= javascript_include_tag :highcharts, :'runs-index'
+
+%h1 Listing runs
+
+%div{ :style => 'float:right' }
+  %b Gold Earned: 
+  = number_with_delimiter(all_gold)  
+  %br
+  %b Total Hours:
+  = number_with_delimiter(all_hours)
+
+%div{ :id => 'container', :style => 'width: 100%; clear:both;'}
+
+= link_to 'New Run', new_run_path
+%br
+%br
+
+%table{ :width => '100%', :border => '1' }
+  %tr
+    %th Date
+    %th Time spent
+    %th Gold before
+    %th Gold after
+    %th Gold earned
+    %th Gold/Min
+    %th Gold/Hour
+    %th
+    %th
+    %th
+
+  - @runs.each do |run|
+    %tr
+      %td= run.date
+      %td= number_with_delimiter(run.time_spent)
+      %td= number_with_delimiter(run.gold_before)
+      %td= number_with_delimiter(run.gold_after)
+      %td= number_with_delimiter(run.gold_earned)
+      %td= number_with_delimiter(single_run_gold_per_min run)
+      %td= number_with_delimiter(single_run_gold_per_hour run)
+      %td= link_to 'Show', run
+      %td= link_to 'Edit', edit_run_path(run)
+      %td= link_to 'Destroy', run, method: :delete, data: { confirm: 'Are you sure?' }

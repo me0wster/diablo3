@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @run.date
+%p
+  %b Time spent:
+  = @run.time_spent
+%p
+  %b Gold before:
+  = @run.gold_before
+%p
+  %b Gold after:
+  = @run.gold_after
+%p
+  %b Gold earned:
+  = @run.gold_earned
+
+= link_to 'Edit', edit_run_path(@run)
+\|
+= link_to 'Back', runs_path

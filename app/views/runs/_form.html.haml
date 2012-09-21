@@ -1,0 +1,40 @@
+= form_for @run do |f|
+  - if @run.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@run.errors.count, "error")} prohibited this run from being saved:"
+      %ul
+        - @run.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :date
+    = f.date_select :date 
+  .field
+    = f.label :time_spent
+    = f.number_field :time_spent, :min => 0
+  .field
+    = f.label :gold_before
+    = f.number_field :gold_before, :min => 0
+  .field
+    = f.label :gold_after
+    = f.number_field :gold_after, :min => 0
+  .field
+    = f.label :gold_earned
+    = f.text_field :gold_earned, :readonly => true
+  .actions
+    = f.submit 'Save'
+
+:javascript
+  $(document).ready(function() {
+    $('#run_gold_before').change(function() {
+      var goldBefore  = parseFloat($('#run_gold_before').val());
+      var goldAfter   = parseFloat($('#run_gold_after').val());
+      $('#run_gold_earned').val(goldAfter - goldBefore);
+    });
+    
+    $('#run_gold_after').change(function() {
+      var goldBefore  = parseFloat($('#run_gold_before').val());
+      var goldAfter   = parseFloat($('#run_gold_after').val());
+      $('#run_gold_earned').val(goldAfter - goldBefore);
+    });
+  });

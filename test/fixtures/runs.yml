@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2012-09-16
+  time_spent: 1
+  gold_before: 1
+  gold_after: 1
+  gold_earned: MyString
+
+two:
+  date: 2012-09-16
+  time_spent: 1
+  gold_before: 1
+  gold_after: 1
+  gold_earned: MyString

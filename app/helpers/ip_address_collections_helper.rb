@@ -1,0 +1,2 @@
+module IpAddressCollectionsHelper
+end
